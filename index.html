@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .left,.right{
+            width: 200px;
+            background-color: red;
+            height:300px;
+        }
+        /* .box{
+            width: 100%;
+            height: 300px;
+        } */
+        .left{
+            float: left;
+        }
+        .right{
+            float: right;
+        }
+        .center{
+            margin: 0 200px;
+            background-color: #ccc;
+            height: 300px;
+        }
+
+        html,body{
+            width: 100%;
+        }
+        .l,.r{
+            position: absolute;
+            background-color: #ccc;
+            height: 300px;
+            width: 200px;
+            top: 0;
+        }
+        .l{
+            left: 0;
+        }
+        .r{
+            right: 0;
+        }
+        .cen{
+            background-color: rebeccapurple;
+            height: 300px;
+        }
+
+
+        /* flex */
+        .box3{
+            display: flex;
+        }
+        .le,.ri{
+            width: 200px;
+            height: 300px;
+            background-color: #ccc;
+        }
+        .centers{
+            flex: 1;
+            height: 300px;
+            background-color: royalblue;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="center"></div>
+    </div> -->
+    <!-- <div class="box2">
+            <div class="l"></div>
+            <div class="cen"></div>
+            <div class="r"></div>
+    </div> -->
+    
+    <div class="box3">
+        <div class="le"></div>
+        <div class="centers"></div>
+        <div class="ri"></div>
+    </div>
+
+
+</body>
+</html>

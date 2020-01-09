@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+        .content{
+            position :relative;
+        
+        height :100%;
+        
+        background-color: #f2f2f2;
+        
+        }
+        
+       
+        .water{
+        position :absolute;
+        
+        width :16rpx;
+        
+        height: 24rpx;
+        
+        background: #ccc;
+        
+        clip-path: ellipse(20% 60% at 50% 50%);
+        
+        /* // animation :drops 2s cubic-bezier(0.82, -0.01, 0.81, 0.92) infinite; */
+        
+        /* for $i in 1...100 */
+        }
+        
+        
+        
+        .hbsd-{$i}{
+            animation :drops ($i/20)s cubic-bezier(0.82, -0.01, 0.81, 0.92) infinite;
+        }
+        
+        
+        @keyframes drops{
+            0%{
+            opacity :0
+            }
+            20%{
+            opacity :1
+            }
+            90%{
+                opacity: 1  
+            }
+            100%{  
+                opacity: 0  transform translate3d(10px,100vh,-10px) 
+            }
+        }
+        
+        
+        
+        </style>
+</head>
+<body>
+    
+       
+        <div id="example" class="content" ref="content">
+            <div class="water" v-for="item of count" :key="item.id" :class="getClass()" :style="getStyle()"></div>
+        </div>
+</body>
+<script src="vue.js"></script>
+
+<script>
+    var vm = new Vue({
+        el: '#example',
+        props: {
+            count: {
+            type: Number,
+            default: 30
+            },
+        },
+        methods: {
+            getClass() {
+            return `hbsd-${Math.floor(Math.random() * 50 + 30)}`;
+            },
+            getStyle() {
+            return `left:${Math.random() * 100}%;top:${Math.random() * 30}px`;
+            }
+        },
+    })
+</script>
+</html>

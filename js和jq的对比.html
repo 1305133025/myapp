@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        #box{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+        input[type='number'] {
+            -moz-appearance:textfield;
+        }
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <select name="" id="box">
+        <option value="">1</option>
+        <option value="">2</option>
+        <option value="">3</option>
+        <option value="">4</option>
+        <option value="">5</option>
+    </select>
+    <input type="number" name="" id="">
+    
+    <button onclick="add(this)">js创建动态元素</button>
+    <ul id="ull"></ul>
+
+    <button id="btn">jq创建动态元素</button>
+    <ul id="ull2"></ul>
+</body>
+<script src="jquery-1.10.1.min.js"></script>
+<script>
+
+   
+    // JS------------------------------------------------------------------------
+    window.onload = function(){
+        var opt = document.createElement("span")
+        var textOpt = document.createTextNode("这是我新创建的内容");
+        opt.appendChild(textOpt);
+        var box = document.getElementById("box")
+        box.appendChild(opt)
+        console.log(111)
+    }
+    // 点击添加元素，给未来点击事件
+    function add(e){
+        var ull = document.getElementById("ull");
+        for(var i=0;i<10;i++){
+            var li  = document.createElement("li")
+            li.innerHTML = "list"+i;
+            ull.appendChild(li)
+        }
+        e.innerHTML = "点击li样式变化"
+    }
+    var ull = document.getElementById("ull")
+    ull.addEventListener('click',function(e){
+        var that = e.target;
+        var dom = e.target.tagName.toLowerCase();
+        if(dom=='li'){
+            that.style.color="red";
+            that.innerHTML = "我变了"
+        }
+    })
+
+
+
+
+    // JQ--------------------------------------------------------------------------
+    $(function(){
+        // $("#box").attr("id")  //获取id
+    　　var oNewP = $("<p>使用jQuery创建的内容</p>");
+        oNewP.insertAfter("#display"); //insertAfter方法
+        $("#box").append(oNewP)
+        console.log(2222)
+        
+　　})	
+    // 未来元素添加事件
+    $("#btn").click(function(){
+        for(var i=0;i<10;i++){
+            var li = $("<li></li>")
+            li.html("list"+i)
+            $("#ull2").append(li)
+        }
+    })
+    $("#ull2").on("click","li",function(){
+        $(this).css({color:"red",fontSize:"20px"})
+        console.log($(this).html())
+        console.log($(this).text())
+        console.log($(this).index())
+    })
+</script>
+</html>

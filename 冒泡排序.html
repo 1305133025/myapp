@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 
+        var zhi = [6, 2, 3, 43, 444, 654, 65, 338, 0]
+        for (var i = 0; i < zhi.length; i++) {
+            for (var j = 0; j < zhi.length - i - 1; j++) {
+                if (zhi[j] > zhi[j + 1]) {
+                    var tmp = zhi[j];
+                    zhi[j] = zhi[j + 1];
+                    zhi[j + 1] = tmp
+                }
+            }
+        }
+        // console.log(zhi)
+
+
+        // 全部大写字母或全部小写字母排序
+        function stringSort(str) {
+            if (typeof str === 'string')
+                str = str.split(',');
+            if (!Array.isArray(str)) {
+                console.error('参数类型错误, 必须为数组或以(,)分割的字符串.')
+                return str;
+            }
+            str.sort();
+            console.log(str.sort())
+            return str.join();
+        }
+        //测试
+        var test1 = ["B000", "AB621", "C752B", "AC700", "D5657"];
+        console.log(stringSort(test1));
+        var test2 = "BB000,AB621,C752B,AC700,D5657";
+        console.log(stringSort(test2));
+
+
+        // 数字排序
+        function stringSortNumber(str) {
+            if (typeof str === 'string')
+                str = str.split(',');
+            if (!Array.isArray(str)) {
+                console.error('参数类型错误, 必须为数组或以(,)分割的字符串.')
+                return str;
+            }
+            str.sort(sortNumber);
+            return str.join();
+        }
+
+        function sortNumber(a, b) {
+            return a - b
+        }
+        //测试
+        var test1 = ["5", "6", "3", "56", "1"];
+        console.log(stringSortNumber(test1));
+        var test2 = [6, 2, 3, 43, 444, 654, 65, 338, 0]
+        console.log(stringSortNumber(test2));
+        var test3 = '6,2,3,43,444,654,65,338,0';
+        console.log(stringSortNumber(test3));
+    </script>
+</body>
+
+</html>

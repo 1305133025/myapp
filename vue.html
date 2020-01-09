@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active{
+            color: red;
+        }
+        .act{
+            color: blue;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="example">
+        <p>Original message: "{{ message }} "{{messages()}}</p>
+        <!-- <p>Computed reversed message: "{{ reversedMessage }}"</p> -->
+        <div id="box">
+            <button @click.enter="change()">点击变化</button>
+            <p>{{msg.name}}</p>
+       </div>
+       <div :class="{active:class1,act:class2}" :style="{width:wid+'px',height:hei+'px',backgroundColor:'#ccc'}">
+           class和style样式绑定
+       </div>
+       <!-- <div :style="styleobj">
+            style样式绑定
+        </div> -->
+
+        <div v-if="class1">
+            v-if 如果
+        </div>
+        <div v-else-if="class2">
+            v-else -if
+        </div>
+        <div v-else>
+            v-else 否则
+        </div>
+        <transition name="fade">
+            <ul>
+                <template v-if="class1" v-for="item in mess">
+                    <li>{{ item }}</li>
+                  </template>
+            </ul>
+        </transition>
+        
+    </div>
+   
+    
+</body>
+<script src="vue.js"></script>
+<script>
+    
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            message: 'Hello',
+            msg:{
+                name:'变化'
+            },
+            class1:true,
+            class2:false,
+            wid:"400",
+            hei:'200',
+            styleobj:{
+                color:"yellow",
+                width:'200px',
+                height:'200px',
+                backgroundColor:'green'
+            },
+            mess:[2,45,56,45,20,5,6]
+        },
+        created() {
+            console.log(this.mess.filter(function(msg){
+                return msg>20
+            }))
+            
+        },
+        computed: {
+            // 计算属性的 getter
+            // messages: function () {
+            // // `this` 指向 vm 实例
+            // return this.message.split('').reverse()
+            // }
+        },
+        methods: {
+            messages(){
+                return this.message.split('').reverse()
+            },
+            change(){
+                console.log(11111)
+                this.msg.name="我变化了",
+                this.class2=true;
+                this.class1= false;
+                // this.mess[3]=90
+                this.$set(this.mess,3,90)
+                console.log(this.mess)
+            }
+        },
+        watch: {
+            'msg.name':{
+                handler(newName,oldName){
+                    console.log(newName,oldName)
+                },
+                deep:true,
+                immediate:true
+            }
+        },
+    })
+</script>
+</html>

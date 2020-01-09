@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <div id="box">
+        外部
+        <div id="content">内部</div>
+    </div>
+
+</body>
+    <script src="jquery-1.10.1.min.js"></script>
+    <script>
+
+        $("#box").click(function(e){
+            e.stopPropagation()
+            console.log("外部")
+        })
+        $("#content").click(function(e){
+            e.stopPropagation()
+            console.log("内部")
+        })
+    </script>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         function person(){
+            this.name = "zhangsan"
+        }
+                
+        function stu(){
+            this.age = "123"
+        }
+
+        stu.prototype = new person()
+
+        var str = new stu()
+        console.log(str.name)
+
+
+        var name = 'global';
+
+        var obj = {
+            name : 'obj',
+            dose : function(){
+                this.name = 'dose';
+                return function(){
+                    return this.name;
+                }
+            }
+        }
+    console.log(obj.dose().call(this))
+    console.log(obj.name);
+
+
+    for (let i = 0; i <10; i++) {  
+        setTimeout(function() {  // 同步注册回调函数到 异步的 宏任务队列。
+            console.log(i);        // 执行此代码时，同步代码for循环已经执行完成
+        }, 0);
+    }
+
+    console.log(aicoder);    // 错误：Uncaught ReferenceError ...
+var  aicoder = 'aicoder.com';
+// 这里就可以安全使用aicoder
+
+    </script>
+   
+
+
+
+
+</body>
+</html>

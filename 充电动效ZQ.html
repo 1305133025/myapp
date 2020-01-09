@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style type="text/css">
+/*电池充电*/
+html,
+body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background: #e4e4e4;
+}
+.conntainer{
+    width: 140px;
+    margin:auto;
+    position: relative;
+}
+
+.charge{
+    height: 200px;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+}
+.charge::after{
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 80%;
+    background: linear-gradient(to bottom, #7abcff 0%, #00BCD4 44%, #2196F3 100%);
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 0 14px 28px rgba(33, 150, 243, 0), 0 10px 10px rgba(9, 188, 215, 0.08);
+    animation: charging 10s linear infinite;
+    filter: hue-rotate(90deg);
+}
+@keyframes charging{
+    50% {
+        box-shadow: 0 14px 28px rgba(0, 150, 136, 0.83), 0px 4px 10px rgba(9, 188, 215, 0.4);
+    }
+    98% {
+        top: 2%;
+        filter: hue-rotate(0deg);
+        border-radius: 0 0 5px 5px;
+        box-shadow: 0 14px 28px rgba(4, 188, 213, .2), 0 10px 10px rgba(9, 188, 215, 0.08);
+    }
+    100% {
+        top: 0%;
+        filter: hue-rotate(0deg);
+        border-radius: 15px 15px 5px 5px;
+        box-shadow: 0 14px 28px rgba(4, 188, 213, 0), 0 10px 10px rgba(9, 188, 215, 0.4);
+    }
+}
+.xuanzhuan{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 140px;
+    height: 220px;
+    overflow: hidden;
+    border-radius: 15px 15px 5px 5px;
+}
+
+.box{
+    position:absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 300px;
+    height: 300px;
+    background-color:rgba(255, 255, 255, .8);
+    border-radius: 45% 47% 44% 42%;
+    animation: move 10S linear infinite;
+    /* 次数 */
+    /* animation-iteration-count:1;  */
+    
+}
+.box:nth-child(2) {
+    border-radius: 38% 46% 43% 47%;
+    transform: translate(-50%, 0) rotate(-135deg);
+}
+.box:nth-child(3) {
+    border-radius: 42% 46% 37% 40%;
+    transform: translate(-50%, 0) rotate(135deg);
+}
+@keyframes move {
+    100% {
+        transform: translate(-50%, -180px) rotate(720deg);
+    }
+}
+
+
+/* 百分比滚动充电 */
+html,body{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+.scrollCon{
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+}
+.scroll{
+    filter: contrast(15) hue-rotate(0);
+    width: 300px;
+    height: 400px;
+    background-color: #000;
+    overflow: hidden;
+    animation: hueRotate 10s infinite linear;
+}
+.number{
+    position: absolute;
+    top: 20%;
+    width: 300px;
+    line-height: 100px;
+    font-size: 32px;
+    color: #fff;
+    z-index: 11;
+    text-align: center;
+}
+.top{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    filter: blur(3px);
+}
+.top::after{
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 42% 38% 62% 49% / 45%;
+    background-color: #00ff6f;
+    animation: remote 10s linear infinite;
+}
+.top::before{
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 50%;
+    background-color: #000;
+    z-index: 10;
+}
+@keyframes remote{
+    100%{
+        transform: translate(-50%,-50%) rotate(720deg);
+    }
+}
+
+.bottom{
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    background-color: #00ff6f;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 100px 100px 0 0 ;
+    filter: blur(5px);
+}
+.bottom li{
+    position: absolute;
+    border-radius: 50%;
+    background-color: #00ff6f;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    
+}
+@keyframes moveToTop{
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.1;
+        transform: translate(-50%, -180px);
+    }
+}
+@keyframes hueRotate{
+    100%{
+        filter: contrast(15) hue-rotate(360deg);
+    }
+}
+</style>
+</head>
+<body>
+    <!-- 电池充电 -->
+    <div class="conntainer">
+        <div class="charge"></div>
+        <div class="xuanzhuan">
+            <div class="box"></div>
+            <div class="box"></div>
+            <div class="box"></div>
+        </div>
+    </div>
+
+
+    <!-- 百分比滚动充电 -->
+    <div class="scrollCon">
+        <div class="number">0.0%</div>
+        <div class="scroll">
+            <div class="top"></div>
+            <ul class="bottom">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        
+    </div>
+    
+</body>
+<script src="./jquery-1.10.1.min.js"></script>
+<script type="text/javascript">
+
+fn()
+// 数字滚动充电
+function fn(){
+    var n = 0;
+    var time = setInterval(function(){
+        n+=0.1;
+        let numStr = n.toString();
+        let index = numStr.indexOf(".")
+        let result = numStr.slice(0, index+2);  //截取位数
+        console.log(result)
+        
+        if(result=="99.9"){
+            clearInterval(time);
+            $(".number").html("100%")
+            $(".bottom li").css({'display':"none"})
+        }else{
+            $(".number").html(result+"%")
+        }
+    },100)
+
+    var num = $(".bottom li").length
+    
+    for(var i= 0;i<num;i++){
+        var width = Math.floor(Math.random()*15+15)+'px';
+        var left = Math.floor(Math.random()*70+15)+'px';
+        var starTime = Math.floor(Math.random()*6+3)+'s';
+        var endTime = Math.floor((Math.random()*5000+5000)/1000)+'s';
+        $(".bottom li").eq(i).css({"width":width,"height":width,"left":left,"animation":"moveToTop "+starTime+" ease-in-out -"+endTime+" infinite"});
+    }
+}
+
+
+
+
+
+//单击显示随机文字
+var a_idx = 0;
+jQuery(document).ready(function($) {
+    $("body").click(function(e) {
+        var a = new Array("路见不平一声吼，吼完继续往前走。", 
+        "咸鱼翻身，还是咸鱼。", "水能载舟，亦能煮粥！",
+         "明月几时有，抬头自己瞅。", "天哪！我的衣服又瘦了。",
+          "听君一席话，回家烤白薯。", "流氓不可怕，就怕流氓有文化。",
+           "知识就像内裤，看不见但很重要。", "为了祖国下一代，再丑也得谈恋爱。", 
+           "穷玩车，富玩表，牛B加班敲电脑。", "英雄不问出路，流氓不看岁数。",
+            "我们的目标：向钱看，向厚赚。", "帅有个屁用！到头来还不是被卒吃掉！");
+        var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;
+        var x = e.pageX,
+        y = e.pageY;
+        var a =Math.floor(Math.random()*255+0);
+        var b =Math.floor(Math.random()*130+0);
+        var c =Math.floor(Math.random()*220+100);
+        var d =Math.floor(Math.random()*70+5);
+        $i.css({
+            "z-index": 5,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "rgba("+a+","+b+","+c+","+d+")"
+        });
+        $("body").append($i);
+        $i.animate({
+            "top": y - 180,
+            "opacity": 0
+        },
+			3000,
+			function() {
+			    $i.remove();
+			});
+    });
+    setTimeout('delay()', 2000);
+});
+function delay() {
+    $(".buryit").removeAttr("onclick");
+}
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+    
+        var  arr = [11,2,4,5,11,2,2,4]
+        var str = "qwert,rttttt"
+        function fn(arr){
+            var obj={}
+            var newArr=[]
+            for(var i=0;i<arr.length;i++){
+                if(!obj[arr[i]]){
+                    newArr.push(arr[i]);
+                    obj[arr[i]]=true
+                }
+            }
+            return newArr
+        }
+
+        console.log(fn(arr))
+        // console.log(obj)
+        
+        // console.log([12,45,47,56,213,4654,154])
+        // console.log(Array.from([12,45,47,56,213,4654,154]))
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>Document</title>
+    <style>
+        .box{
+            display: flex;
+            /* flex-wrap: wrap; */
+            justify-content: center;
+            align-items: center;
+        }
+        /* .box1{
+            background-color: #ccc;
+            width: 50%;
+            height: 200px;
+            margin-right: 2%;
+            margin-bottom: 20px;
+        } */
+        /* .box2{
+            height: 32px;
+            border: 1px solid red;
+            font-size: 14px;
+            line-height: 32px;
+        } */
+    </style>
+</head>
+<body>
+    <!-- <div class="box">
+        <div class="box2"> 
+            <span>d都十分十分惹供热隔热个人greg热</span>
+        </div>
+    </div> -->
+    <script>
+        // var arr =  [1,2,2,3,3,3,3,44,5,6]
+        // function check(value){
+        //     return value==5
+        // }
+        // var arr1 = arr.filter(check)
+        // console.log(arr1)
+
+
+        //全局变量
+        var allUserData = [];
+        
+        //普通的logStuff函数，将内容打印到控制台    
+        function logStuff (userData){
+            if ( typeof userData === "string")
+            {
+                console.log(userData);
+            }
+            else if ( typeof userData === "object"){
+                console.log(userData)
+                for(var item in userData){
+                    console.log(item + ": " + userData[item]);
+                }
+            }
+
+        }
+        
+        //一个接收两个参数的函数，后面一个是回调函数    
+        function getInput (options, callback){
+            allUserData.push(options);
+            callback(options);
+        }
+        
+        //当我们调用getInput函数时，我们将logStuff作为一个参数传递给它    
+        //因此logStuff将会在getInput函数内被回调（或者执行）    
+        getInput({name:"Rich",speciality:"Javascript"}, logStuff);
+        // getInput("Javascript", logStuff);
+    </script>
+</body>
+</html>

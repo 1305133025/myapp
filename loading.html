@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+        
+/* body {
+  background: -webkit-radial-gradient(ellipse farthest-corner at center bottom, #69d2fb 0%, #20438e 100%) center bottom/100% fixed;
+  background: radial-gradient(ellipse farthest-corner at center bottom, #69d2fb 0%, #20438e 100%) center bottom/100% fixed;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: rgba(255, 255, 255, 0.8);
+}
+ 
+body *,
+body *:before,
+body *:after {
+  box-sizing: inherit;
+}
+ 
+body:hover > * {
+  opacity: .5;
+}
+ 
+.box {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  border: 1px solid currentcolor;
+  border-radius: 3px;
+  font-size: 30px;
+  padding: 1em;
+  position: relative;
+  margin-bottom: .25em;
+  vertical-align: top;
+  -webkit-transition: .3s color, .3s border, .3s transform, .3s opacity;
+  transition: .3s color, .3s border, .3s transform, .3s opacity;
+}
+ 
+.box:hover {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-size: 0;
+  padding: 0;
+  border-width: 3px;
+  line-height: 200px;
+  opacity: 1;
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+  z-index: 2;
+}
+ 
+.box:hover [class*="loader-"] {
+  font-size: 70px;
+  line-height: 200px;
+} */
+
+[class*="loader-"] {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  color: inherit;
+  vertical-align: middle;
+  pointer-events: none;
+}
+ 
+.loader-01 {
+  border: .2em dotted currentcolor;
+  border-radius: 50%;
+  -webkit-animation: 1s loader-01 linear infinite;
+  animation: 1s loader-01 linear infinite;
+}
+ 
+@-webkit-keyframes loader-01 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+ 
+@keyframes loader-01 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+    </style>
+</head>
+<body>
+        <div class="box">
+                loader-01
+                <div class="loader-01">
+                </div>
+              </div>
+</body>
+</html>

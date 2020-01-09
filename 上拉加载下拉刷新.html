@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+
+    <style>
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+        }
+
+        .header {
+
+            position: fixed;
+
+            left: 0;
+
+            top: 0;
+
+            width: 100%;
+
+            height: 60px;
+
+            background: pink;
+
+            line-height: 60px;
+
+            text-align: center;
+
+            color: white;
+
+        }
+
+        .content {
+
+            width: 200px;
+
+            height: 1000px;
+
+            border: 2px solid green;
+
+            background: linear-gradient(#fff, #000);
+
+            -webkit-flex-shrink: 0;
+
+            flex-shrink: 0;
+
+            margin: 60px auto 0;
+
+        }
+
+        img {
+
+            width: 100%;
+
+            height: 180px;
+
+            position: absolute;
+
+            top: 60px;
+
+            left: 0;
+
+            display: none;
+
+            z-index: -1
+
+        }
+
+        p{
+
+            line-height: 30px;
+
+            text-align: center;
+
+            display: none
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="main-box" id="box1">
+        <div class="popup-box">
+        </div>
+      </div>
+      <div class="main-box" id="box2">
+        <div class="popup-box">
+        </div>
+      </div>
+  </body>
+   
+  <style>
+  * {
+  margin: 0;
+  padding: 0;
+}
+.main-box {
+  background: skyblue;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+.popup-box {
+  width: 100%;
+}
+.item {
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.tips{
+  text-align: center;
+}
+#box2 {
+  margin-top: 50px;
+}
+  </style>
+   
+  <script>/*下拉加载*/
+    function tDscroll(obj) {
+      this.key = true;         //防止重复的请求
+      this.dom = obj.dom;        //传入的dom
+      this.fn = obj.fn;         //回调函数
+      this.outDom = this.dom.querySelector(".popup-box"); //获取内容盒子
+      this.showHeight = dom.offsetHeight;         //显示的高度
+      this.actualHeight = this.outDom.offsetHeight;       //获取实际高度的内容
+      this.startY = 0;                //起始点击位置
+      this.changedY = 0;               //手指移动的距离
+      this.originY = 0;               //偏移量
+      var that = this;
+      this.dom.addEventListener("touchstart",function (ev) {
+        that.onStart(ev);
+      });
+      this.dom.addEventListener("touchmove",function (ev) {
+        that.onMove(ev);
+      });
+      this.dom.addEventListener("touchend",function (ev) {
+        that.onEnd(ev);
+      });
+      this.fn.call(this,this.outDom);
+    };
+     
+    tDscroll.prototype.onStart = function (ev) {
+      this.startY = ev.targetTouches[0].clientY;
+      var tempArr = window.getComputedStyle(this.outDom).transform.split(",");
+      if (tempArr.length > 2) {
+        this.originY = parseInt(tempArr[tempArr.length - 1]) || 0;
+      }
+    };
+     
+    tDscroll.prototype.onMove = function (ev) {
+      this.changedY = ev.touches[0].clientY - this.startY;
+      var changNum = (this.originY + this.changedY);
+      var scrollHeight = -changNum + this.showHeight;
+      if (changNum > 50)return;
+      if (scrollHeight > this.actualHeight + 50)return;
+      if (scrollHeight > this.actualHeight - 50 && this.key) {
+        this.fn.call(this,this.outDom);
+      }
+      this.outDom.style.cssText = "transform: translateY(" + changNum + "px);";
+    };
+     
+    tDscroll.prototype.onEnd = function() {
+      if ((this.originY + this.changedY) > 50 ) {
+        this.outDom.style.cssText = "transform: translateY(0px);transition:all .3s";
+      }
+      if (-(this.originY + this.changedY) + this.showHeight > this.actualHeight + 50) {
+        this.outDom.style.cssText = "transform: translateY(-"+(this.actualHeight - this.showHeight)+"px);transition:all .3s";
+      }
+    };
+     
+     
+    var dom = document.querySelector("#box1");  //获取dom
+    var dom2 = document.querySelector("#box2");  //获取dom
+    var obj = {
+      dom : dom,
+      fn : add
+    };
+    var obj2 = {
+      dom : dom2,
+      fn : add
+    };
+    new tDscroll(obj);
+    new tDscroll(obj2);
+    var page = 0;          //当前的页数(模拟用)
+     
+    // 模拟ajax
+    function add(outDom) {
+      var that = this;
+      this.key = false;
+      var str = "";
+      for (var i = 1;i < 11;i++) {
+        str+="<div class='item'>"+(i+((page)*10))+"</div>"
+      }
+      page++;
+      setTimeout(function () {
+        var tips = outDom.querySelector(".tips");       //获取提升
+        tips && outDom.removeChild(tips); //如果不是第一次 添加
+        str += "<div class='tips'>加载更多</div>";
+        outDom.innerHTML += str;
+        that.actualHeight = outDom.offsetHeight;
+        that.key = true;
+      },2000)
+    }
+  </script>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="jquery-1.10.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // $("div").mouseover(function(){
+            //     $(this).html('变了变了')
+            //     $("[href]").css('color','red')
+            // })
+            // // $('ul>li').click(function() {
+            // //     console.log($(this).html());
+            // // });
+            // // $('ul').append('<li>5</li><li>6</li>');
+
+            // $('body').on('click', 'ul>li', function() {
+            //     console.log($(this).html());
+            // });
+            // $('ul').append('<li>5</li><li>6</li>');
+            
+            // displayCars();
+            
+        })
+        // var cars = [
+        //         {type:"BMW", year:2017},
+        //         {type:"Audi", year:2019},
+        //         {type:"porsche", year:2018}
+        //     ];
+        // function myFunction() {
+        //     cars.sort(function(a, b){
+        //         var x = a.type.toLowerCase();
+        //         var y = b.type.toLowerCase();
+        //         if (x < y) {return -1;}
+        //         if (x > y) {return 1;}
+        //         return 0;
+        //     });
+        //     displayCars();
+        // }
+        // function displayCars() {
+        //     document.getElementById("demo").innerHTML =
+        //     cars[0].type + " " + cars[0].year + "<br>" +
+        //     cars[1].type + " " + cars[1].year + "<br>" +
+        //     cars[2].type + " " + cars[2].year;
+        // }    
+    </script>
+</head>
+<body>
+    <div>点击按钮改变字体内容</div>
+    <a href="#">43543543</a>
+
+    <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    <!-- <a href="../"></a> -->
+    <!-- <div style="width:100%;">
+        <div style="float:left;width:33.3333333333%;height:300px;background-color:red">1111</div>
+        <div style="float:left;width:33.3333333333%;height:300px;background-color:green">1111</div>
+        <div style="float:left;width:33.3333333333%;height:300px;background-color:burlywood">1111</div>
+        <div style="float:left;width:33.3333333333%;height:300px;background-color:burlywood">1111</div>
+        <div style="float:left;width:33.3333333333%;height:300px;background-color:burlywood">1111</div>
+        <div style="float:left;width:33.3333333333%;height:300px;background-color:burlywood">1111</div>
+    </div> -->
+    <div style="display: flex;">
+        <div style="width:200px;height:300px;background-color:red">654654654</div>
+        <div style="flex: 1;height:300px;background-color:blue">654654654654</div>
+    </div>
+    
+<button onclick="myFunction()">排序</button>
+
+<p id="demo"></p>
+<script>
+    var cars = [
+      {type:"BMW", year:2017},
+      {type:"Audi", year:2019},
+      {type:"porsche", year:2018}
+    ];
+    
+    displayCars();
+    
+    function myFunction() {
+      cars.sort(function(a, b){
+        var x = a.type.toLowerCase();
+        var y = b.type.toLowerCase();
+        if (x < y) {return -1;}
+        if (x > y) {return 1;}
+        return 0;
+      });
+      displayCars();
+    }
+    
+    function displayCars() {
+      document.getElementById("demo").innerHTML =
+      cars[0].type + " " + cars[0].year + "<br>" +
+      cars[1].type + " " + cars[1].year + "<br>" +
+      cars[2].type + " " + cars[2].year;
+    }
+
+
+    function abc(b){
+      // var a = '100',
+      b=b*2
+      console.log(b)
+      return b;
+    }
+    var a = abc(10)
+    console.log(a)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var str1 = "abcdabcabcaabeeeeeee";
+		var str2 = "fhjdiovjdasklgudsaklfgdasklfjadkslfds";
+		//统计字符串中，每个字符各出现了多少次
+		//定义成一个函数，函数接受一个参数，统计该参数，每个字符各出现了多少次
+		
+		
+		function calcMaxNum(str){
+			var obj = {};
+			for(var i=0;i<str.length;i++){
+				if(str[i] in obj){		//如果字符串中某个字符已经是对象的属性
+					obj[str[i]] +=1; 		//对象对应的属性的数字就+1
+				}else{
+					obj[str[i]] = 1;		//对象添加一个新属性，数字为1
+				}
+			}
+			console.log(obj);
+			var max = {				//记录最多的字符名和个数
+				name:"",
+				num:0
+			};
+			for(var key in obj){	//循环遍历对象，判断最大值
+				if(obj[key] > max.num){
+					max.name = key;
+					max.num = obj[key]
+				}
+			}
+			console.log(max);
+			console.log(max.name+"出现的次数最多，共出现了"+max.num+"次")
+		}
+		
+		calcMaxNum(str1)
+//		calcMaxNum(str2)
+//		calcMaxNum("aabbccdgsfdgsdaassssssssssssssss");
+		
+		
+		var obj = {
+			a:10,
+			b:20
+		}
+		console.log(obj["a"])
+		console.log(obj["c"])		//undefined
+		if(obj["c"]){
+			obj["c"]+=1;
+		}else{
+			obj["c"] = 1
+		}
+		console.log(obj)
+		
+	</script>
+</html>
