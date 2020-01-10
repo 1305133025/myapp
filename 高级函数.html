@@ -16,7 +16,7 @@
         function fn(x){
             return x % 2!==0;
         }
-        console.log(arr.filter(fn))
+        // console.log(arr.filter(fn))
 
 
         // sort排序
@@ -27,11 +27,22 @@
                 return -1;
             }
             if(x<y){
+
                 return 1;
             }
             return 0;
         }
-        console.log(arr1.sort(fn1))
+        // console.log(arr1.sort(fn1))
+
+
+        (function fn(x){
+            // return x+"ceshi";
+            console.log(x)
+        }(2));
+
+        (function fun4(){
+            console.log("fun4");
+        }()); // "fun4"
     </script>
 </body>
 </html>
